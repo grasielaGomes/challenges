@@ -12,6 +12,7 @@ function countUniqueValues(arr) {
 
 // countUniqueValues with 2 pointers
 function countUniqueValues2(arr) {
+  if (arr.length === 0) return 0;
   let i = 0;
   let j = 1;
   while (j < arr.length) {
@@ -25,3 +26,5 @@ function countUniqueValues2(arr) {
 }
 
 console.log(countUniqueValues2([1, 1, 1, 1, 1, 2])); // 2
+console.log(countUniqueValues2([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])); // 7
+console.log(countUniqueValues2([])); // 0
