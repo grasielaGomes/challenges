@@ -9,6 +9,7 @@
 // All arrays will be of the same length.
 // The items in the arrays will be numbers.
 
+// O(n) time complexity
 function commonItems(arr1, arr2) {
   let count = 0;
   const collection = {};
@@ -34,6 +35,7 @@ console.log(commonItems([1, 2, 3, 4], []));
 // const array2 = ['f', 'g', 'h', 'i', 'j', 'a'];
 // commonItems(array1, array2) ➞ true
 
+// O(n) time complexity
 function commonItems2(arr1, arr2) {
   const collection = {};
   const max = Math.max(arr1.length, arr2.length);
@@ -48,3 +50,13 @@ console.log(commonItems2(["a", "b", "c", "d", "e"], ["f", "g", "h", "i", "j"]));
 console.log(commonItems2(["a"], ["f", "g", "h", "i", "j", "a"]));
 console.log(commonItems2([], ["f", "g", "h", "i", "j"]));
 console.log(commonItems2(["a", "b", "c", "d", "e"], []));
+
+// Function with built-in array methods
+// O(n) time complexity
+function commonItems3(arr1, arr2) {
+  return arr1.some(item => arr2.includes(item));
+}
+
+console.log("-----3-----");
+console.log(commonItems3(["a"], ["f", "g", "h", "i", "j", "a"]));
+console.log(commonItems3([], ["f", "g", "h", "i", "j"]));
