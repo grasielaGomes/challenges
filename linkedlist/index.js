@@ -108,6 +108,33 @@ class LinkedList {
     }
     previous.next = previous.next.next;
   }
+
+  insertAt(data, index) {
+    if (!this.head || index <= 0) return this.insertFirst(data);
+    if (index >= this.size()) return this.insertLast(data);
+    const previous = this.getAt(index - 1);
+    const follower = previous.next;
+    const node = new Node(data, follower);
+    previous.next = node;
+  }
+
+  forEach(fn) {
+    let node = this.head;
+    let counter = 0;
+    while (node) {
+      fn(node, counter);
+      node = node.next;
+      counter++;
+    }
+  }
+
+  *[Symbol.iterator]() {
+    let node = this.head;
+    while (node) {
+      yield node;
+      node = node.next;
+    }
+  }
 }
 
 module.exports = { Node, LinkedList };
