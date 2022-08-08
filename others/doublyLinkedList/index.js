@@ -100,8 +100,42 @@ list.append(2);
 list.append(3);
 list.prepend(0);
 list.insert(1, 9);
-// list.remove(2);
-// console.log(list);
 list.print();
 list.printReverse();
 
+class DoublyLinkedList2 {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+    let counter, current;
+    if (index < this.length / 2) {
+      counter = 0;
+      current = this.head;
+      while (counter !== index) {
+        current = current.next;
+        counter++;
+      }
+    } else {
+      counter = this.length - 1;
+      current = this.tail;
+      while (counter !== index) {
+        current = current.previous;
+        counter--;
+      }
+    }
+    return current;
+  }
+
+  set(index, data) {
+    const foundNode = this.get(index);
+    if (foundNode != null) {
+      foundNode.data = data;
+      return true;
+    }
+    return false;
+  }
+}
