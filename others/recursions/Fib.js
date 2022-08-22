@@ -10,3 +10,13 @@ function fib2(n) {
   if (n < 2) return n;
   return fib(n - 1) + fib(n - 2);
 }
+
+function fibMemo(n, memo = [0, 1, 1]) {
+  if (memo[n] !== undefined) return memo[n];
+  if (n <= 2) return 1;
+  let res = fibMemo(n - 1, memo) + fibMemo(n - 2, memo);
+  memo[n] = res;
+  return res;
+}
+
+console.log(fibMemo(5));
